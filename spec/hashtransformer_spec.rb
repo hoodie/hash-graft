@@ -31,10 +31,9 @@ describe HashTransformer do
 
 
   end
-  describe "#hashmixins" do
-    describe "#get_path" do
+  describe "#Mixins" do
 
-      it "gets simple" do
+      it "simply get a path" do
         expect(@example_1.get_path("gals/2/name")).to eq "Terry"
       end
 
@@ -44,7 +43,20 @@ describe HashTransformer do
         ]
       end
 
+      it "simply set a path" do
+        expect(@example_1.get_path("gals/0/name")).to eq "Marylou"
+        expect(@example_1.set_path("gals/0/name", "Mary Lou")).to be_truthy
+        expect(@example_1.get_path("gals/0/name")).to eq "Mary Lou"
+      end
+
+      it "graft Arrays" do
+        expect(true).to be false
+      end
+
+      it "graft Hashes" do
+        expect(true).to be false
+      end
+
     end
-  end
 
 end
