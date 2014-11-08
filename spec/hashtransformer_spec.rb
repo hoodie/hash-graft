@@ -32,14 +32,14 @@ describe HashTransformer do
 
   end
   describe "#hashmixins" do
-    describe "#get" do
+    describe "#get_path" do
 
       it "gets simple" do
-        expect(@example_1.get("gals/2/name")).to eq "Terry"
+        expect(@example_1.get_path("gals/2/name")).to eq "Terry"
       end
 
       it "gets many with *" do
-        expect(@example_1.get("gals/*/name")).to eq [
+        expect(@example_1.get_path("gals/*/name")).to eq [
           "Marylou","Camilly","Terry","Mary","Rita","Amy"
         ]
       end

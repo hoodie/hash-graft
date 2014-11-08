@@ -15,7 +15,7 @@ class HashTransformer
   def transform
     @new_hash = @original_hash
     @rules.each {|rule|
-      @new_hash.set(rule[:new],  @original_hash.get(rule[:old]))
+      @new_hash.set_path(rule[:new],  @original_hash.get_path(rule[:old]))
     }
     return @new_hash
   end
@@ -39,7 +39,7 @@ class Hash
     return self
   end
 
-  def get path, delimiter = ?/, data = self
+  def get_path path, delimiter = ?/, data = self
     path = path.to_s.split(delimiter)if [String, Symbol].include? path.class
     return nil unless path.class == Array
 
@@ -58,7 +58,7 @@ class Hash
 
        elsif data.class == Array and key == ?*
          return data.map do |e|
-           stuff = e.get Array.new path
+           stuff = e.get_path Array.new path
          end
          return data if path.length == 0
 
@@ -69,7 +69,7 @@ class Hash
     end
   end
 
-  def set path, value, delimiter = ?/, symbols = false
+  def set_path path, value, delimiter = ?/, symbols = false
     data = self
     path = path[1..-1] if path.class == String and path[0] == delimiter
     path = path.to_s.split(delimiter) if [String, Symbol].include? path.class
