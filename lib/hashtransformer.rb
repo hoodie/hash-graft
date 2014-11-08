@@ -42,6 +42,7 @@ class Hash
   def get path, delimiter = ?/, data = self
     path = path.to_s.split(delimiter)if [String, Symbol].include? path.class
     return nil unless path.class == Array
+
     while key = path.shift
        if data.class == Hash and not data[key].nil?
          data = data[key]
@@ -53,6 +54,12 @@ class Hash
 
        elsif data.class == Array and key =~ /^\d*$/ and not data[key.to_i].nil?
          data = data[key.to_i]
+         return data if path.length == 0
+
+       elsif data.class == Array and key == ?*
+         return data.map do |e|
+           stuff = e.get Array.new path
+         end
          return data if path.length == 0
 
        else

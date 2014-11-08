@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'pp'
 require File.dirname(__FILE__) + '/spec_helper'
 
 
@@ -6,7 +7,12 @@ describe HashTransformer do
 
   before do
     @example_1 = {
-      "girls" => [
+      "guys" => [
+        {"name" => "Dean"},
+        {"name" => "Sal"},
+        {"name" => "Carlo"},
+      ],
+      "gals" => [
         {"name" => "Marylou"},
         {"name" => "Camilly"},
         {"name" => "Terry"},
@@ -14,7 +20,6 @@ describe HashTransformer do
         {"name" => "Rita"},
         {"name" => "Amy"},
       ]}
-
   end
 
   describe "#generally" do
@@ -24,10 +29,22 @@ describe HashTransformer do
       expect(ht).to be_a HashTransformer
     end
 
-    it "gets" do
-      expect(@example_1.get("girls/2/name")).to eq "Terry"
-    end
 
+  end
+  describe "#hashmixins" do
+    describe "#get" do
+
+      it "gets simple" do
+        expect(@example_1.get("gals/2/name")).to eq "Terry"
+      end
+
+      it "gets many with *" do
+        expect(@example_1.get("gals/*/name")).to eq [
+          "Marylou","Camilly","Terry","Mary","Rita","Amy"
+        ]
+      end
+
+    end
   end
 
 end

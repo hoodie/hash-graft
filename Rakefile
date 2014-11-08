@@ -11,7 +11,7 @@ task :test    => :spec
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.rspec_opts = [
     '--colour',
-    '--format documentation',
+    #'--format documentation',
     '--fail-fast',
     '-r ' + File.expand_path( File.join( 'spec', 'spec_helper') ),
   ]
