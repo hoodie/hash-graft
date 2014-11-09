@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'pp'
-require File.dirname(__FILE__) + '/spec_helper'
+require File.join File.dirname(__FILE__), 'spec_helper.rb'
 
 
 describe HashTransformer do

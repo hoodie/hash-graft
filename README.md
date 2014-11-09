@@ -3,7 +3,7 @@ HashGraft
 
 ## Hash/Array Mixins
 
-adds get_path(path) and set_path(path, value) to Hash and Array.
+adds get_path(path) and set_path(path, value) to Hash.
 Allows to traverse deeply nested data structures similar to structures.
 
 Arrays also validate a wildcard "*".
@@ -26,6 +26,8 @@ Arrays also validate a wildcard "*".
 
 @example_1.get_path "gals/2/name" # => "Terry"
 @example_1.get_path("gals/*/name") # => ["Marylou","Camilly","Terry","Mary","Rita","Amy"]
+
+@example_1.graft(@example_1) # => nothing changes
 
 ```
 

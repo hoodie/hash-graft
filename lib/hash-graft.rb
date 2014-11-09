@@ -2,16 +2,20 @@
 
 class Hash
   def graft a
+    copy = self.clone
+    copy.graft! a
+  end
+
+  def graft! a
     a.each { |k,v|
       if self[k].class == Hash and a[k].class == Hash
-        self[k].graft a[k]
+        self[k].graft! a[k]
 
       elsif self[k].class == Array and a[k].class == Array
-        self[k].graft a[k]
+        self[k].graft! a[k]
 
       else
         self[k] = a[k]
-
       end
     }
     return self
@@ -42,7 +46,6 @@ class Hash
 
        else
          return data[key]
-         return nil
        end
     end
   end
@@ -63,17 +66,26 @@ class Hash
       end
     end
     #puts "setting #{path} #{value}"
-    data.graft value
+    data.graft! value
   end
 end
 
 class Array
+
   def graft a
+    copy = self.class.new self
+    copy.graft! a
+  end
+
+  def graft! a
     a.each_index{|i|
       if self[i].class == Hash and a[i].class == Hash
-        self[i].graft a[i]
-      else self[i] = a[i] unless a[i].nil?
+        self[i].graft! a[i]
+      else
+        self[i] = a[i] unless a[i].nil?
       end
     }
+    return self
   end
+
 end
