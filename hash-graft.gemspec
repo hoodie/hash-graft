@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + "/lib/hash-graft/version"
 
 Gem::Specification.new do |s|
   s.name        = "hash-graft"
-  s.version     = Hash:Graft::VERSION
+  s.version     = Hash::Graft::VERSION
   s.authors     = ["Hendrik Sollich"]
   s.email       = "hendrik@hoodie.de"
   s.homepage    = "https://github.com/hoodie/hash-graft"
@@ -20,4 +20,7 @@ Gem::Specification.new do |s|
   s.files = ['lib/hash-graft.rb', 'lib/hash-graft/version.rb']
   s.extra_rdoc_files = ["README.md", "LICENSE.md"]
   s.license = 'GPL'
+  s.add_development_dependency 'rspec', "~> 3.1"
+  s.add_development_dependency 'rspec-core', "~> 3.1"
+  s.add_development_dependency 'rake', "~> 10"
 end

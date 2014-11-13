@@ -1,4 +1,4 @@
-GEMSPEC = 'euro.gemspec'
+GEMSPEC = 'hash-graft.gemspec'
 
 #require 'rake'
 #require 'rake/rdoctask'

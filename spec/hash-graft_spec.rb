@@ -3,7 +3,7 @@ require 'pp'
 require File.dirname(__FILE__) + '/spec_helper'
 
 
-describe Hash do
+describe "Hash and Array" do
 
   before(:each) do
     @example_1 = {
@@ -170,14 +170,7 @@ describe Hash do
         @example_1.graft!(other_characters)
         expect(@example_1['guys']).to eq (other_characters['guys'].clone << {"name"=> "Carlo"})
         expect(@example_1['gals']).to eq example_1_fixed['gals']
-
-
-      #  expect(true).to be false
       end
-
-      #it "graft Hashes" do
-      #  expect(true).to be false
-      #end
 
     end
 
