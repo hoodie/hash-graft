@@ -17,7 +17,8 @@ class Hash
       else
         self[k] = a[k]
       end
-    }
+    } unless a.nil?
+
     return self
   end
 
@@ -84,7 +85,7 @@ class Array
       else
         self[i] = a[i] unless a[i].nil?
       end
-    }
+    } unless a.nil?
     return self
   end
 
